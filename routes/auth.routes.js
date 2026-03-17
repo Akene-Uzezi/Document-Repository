@@ -1,20 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const authController = require("../controllers/auth.controller");
 
 router.get("/", (req, res) => {
   res.redirect("/login");
 });
 
-router.get("/login", (req, res) => {
-  res.render("login");
-});
+router.get("/login", authController.getLogin);
 
-router.get("/signup", (req, res) => {
-  res.render("signup");
-});
+router.get("/signup", authController.getSignup);
 
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
-});
+router.get("/dashboard", authController.getDashboard);
 
 module.exports = router;
