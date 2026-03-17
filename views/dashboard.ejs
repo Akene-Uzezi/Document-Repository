@@ -1,0 +1,32 @@
+<%- include('inc/head.ejs', {title: "Dashboard - MyDrive" }) %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    </head>
+
+    <body>
+
+        <!-- Top Bar -->
+        <header class="navbar">
+            <%- include('inc/nav-items.ejs') %>
+        </header>
+
+        <div class="container">
+
+            <!-- Upload Section -->
+            <div class="card">
+                <%- include('inc/file-upload.ejs') %>
+            </div>
+
+            <!-- Files Section -->
+            <div class="card">
+                <h2>My Files</h2>
+                <table>
+                    <%- include('inc/file-items.ejs') %>
+                </table>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>

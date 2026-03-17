@@ -1,4 +1,4 @@
-<%- include('inc/head.ejs', {title: "Login - MyDrive" }) %>
+<%- include('inc/head.ejs', {title: "Sign Up - MyDrive" }) %>
     <link rel="stylesheet" href="/styles/auth.css">
     </head>
 
@@ -7,18 +7,19 @@
         <div class="auth-container">
             <div class="auth-card">
 
-                <h2>Welcome Back</h2>
-                <p>Login to your account</p>
+                <h2>Create Account</h2>
+                <p>Sign up to get started</p>
 
                 <form>
+                    <input type="text" placeholder="Username" required>
                     <input type="email" placeholder="Email" required>
                     <input type="password" placeholder="Password" required>
 
-                    <button type="submit">Login</button>
+                    <button type="submit">Sign Up</button>
                 </form>
 
                 <p class="switch">
-                    Don't have an account? <a href="/signup">Sign up</a>
+                    Already have an account? <a href="/login">Login</a>
                 </p>
 
             </div>
