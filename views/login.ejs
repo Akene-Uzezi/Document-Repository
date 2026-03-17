@@ -16,9 +16,9 @@
                         </div>
                         <% } %>
 
-                            <form>
-                                <input type="email" placeholder="Email" required>
-                                <input type="password" placeholder="Password" required>
+                            <form action="/login" method="POST">
+                                <input type="email" placeholder="Email" name="email" required>
+                                <input type="password" placeholder="Password" name="password" required>
 
                                 <button type="submit">Login</button>
                             </form>

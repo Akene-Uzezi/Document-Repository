@@ -12,6 +12,8 @@ const app = express();
 // server configuration
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+// middleware to parse incoming request bodies
+app.use(express.urlencoded({ extended: true }));
 // for rendering static files like css, js, images
 app.use(express.static("public"));
 //dependency for session management

@@ -20,8 +20,9 @@ body {
   background: white;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.7);
   text-align: center;
+  width: 355px;
 }
 
 /* Headings */
@@ -58,6 +59,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
+  transition: all 0.45s ease-in-out;
 }
 
 .auth-card button:hover {
