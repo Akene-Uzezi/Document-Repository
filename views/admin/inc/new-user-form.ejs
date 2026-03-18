@@ -1,0 +1,34 @@
+<div class="form-card">
+    <h2>Create New User</h2>
+    <% if(error) { %>
+        <div class="error-message">
+            <%= error %>
+        </div>
+        <% } %>
+
+            <form action="/admin/new-user" method="POST">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Enter full name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmpassword" placeholder="Confirm password" required>
+                </div>
+
+                <button type="submit" class="btn">Create User</button>
+
+            </form>
+</div>

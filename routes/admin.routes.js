@@ -6,4 +6,6 @@ router.get("/dashboard", adminController.getDashboard);
 
 router.get("/new-user", adminController.getCreateUser);
 
+router.post("/new-user", adminController.createUser);
+
 module.exports = router;
