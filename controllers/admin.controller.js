@@ -11,6 +11,7 @@ const getDashboard = async (req, res) => {
       id: user._id.toString(),
       name: user.name,
       email: user.email,
+      isAdmin: user.isAdmin,
     };
   });
   res.render("admin/admin-dashboard", { users: newUsers });
@@ -41,7 +42,8 @@ const createUser = async (req, res) => {
 
 const getUpdateUser = async (req, res) => {
   const { id } = req.params;
-  res.send(id);
+  const user = await User.findById(id);
+  res.render("admin/update-user", { error: null, user });
 };
 
 module.exports = {

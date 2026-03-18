@@ -1,5 +1,6 @@
 const db = require("../database/documentRepository.db");
 const bcrypt = require("bcrypt");
+const ObjectId = require("mongodb").ObjectId;
 class User {
   constructor(name, email, password) {
     this.name = name;
@@ -41,6 +42,13 @@ class User {
 
   static async comparePassword(plainPassword, hashedPassword) {
     return await bcrypt.compare(plainPassword, hashedPassword);
+  }
+
+  static async findById(id) {
+    return await db
+      .getDb()
+      .collection("users")
+      .findOne({ _id: new ObjectId(id) });
   }
 }
 

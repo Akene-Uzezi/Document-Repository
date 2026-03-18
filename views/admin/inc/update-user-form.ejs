@@ -1,0 +1,24 @@
+<div class="form-card">
+    <h2>Update User</h2>
+    <% if(error) { %>
+        <div class="error-message">
+            <%= error %>
+        </div>
+        <% } %>
+
+            <form action="/admin/new-user" method="POST">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" value="<%= user.name %>" placeholder="Enter full name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" value="<%=user.email %>" placeholder="Enter email" required>
+                </div>
+
+                <button type="submit" class="btn">Update User</button>
+
+            </form>
+</div>
