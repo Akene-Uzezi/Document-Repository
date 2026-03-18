@@ -6,7 +6,7 @@
         </div>
         <% } %>
 
-            <form action="/admin/new-user" method="POST">
+            <form action="/admin/update/<%= user._id %>" method="POST">
 
                 <div class="input-group">
                     <label>Full Name</label>
@@ -15,7 +15,7 @@
 
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" name="email" value="<%=user.email %>" placeholder="Enter email" required>
+                    <input type="email" name="email" value="<%= user.email %>" placeholder="Enter email" required>
                 </div>
 
                 <button type="submit" class="btn">Update User</button>

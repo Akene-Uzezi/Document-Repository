@@ -12,4 +12,6 @@ router.get("/update/:id", adminController.getUpdateUser);
 
 router.get("/delete/:id", adminController.getDeleteUser);
 
+router.post("/update/:id", adminController.updateUser);
+
 module.exports = router;

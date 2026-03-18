@@ -46,6 +46,18 @@ const getUpdateUser = async (req, res) => {
   res.render("admin/update-user", { error: null, user });
 };
 
+const updateUser = async (req, res, next) => {
+  const { id } = req.params;
+  const { name, email } = req.body;
+  try {
+    await User.updateUser(id, name, email);
+  } catch (err) {
+    next(err);
+  }
+
+  res.redirect("/admin/dashboard");
+};
+
 const getDeleteUser = async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -62,4 +74,5 @@ module.exports = {
   createUser,
   getUpdateUser,
   getDeleteUser,
+  updateUser,
 };

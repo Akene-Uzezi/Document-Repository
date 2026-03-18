@@ -57,6 +57,13 @@ class User {
       .collection("users")
       .deleteOne({ _id: new ObjectId(id) });
   }
+
+  static async updateUser(id, name, email) {
+    return await db
+      .getDb()
+      .collection("users")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { name, email } });
+  }
 }
 
 module.exports = User;
