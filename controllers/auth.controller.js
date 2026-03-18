@@ -54,6 +54,10 @@ const getDashboard = (req, res) => {
     res.redirect("/login");
     return;
   }
+  if (req.session.user && req.session.user.isAdmin) {
+    res.redirect("/admin/dashboard");
+    return;
+  }
   res.render("user/dashboard");
 };
 

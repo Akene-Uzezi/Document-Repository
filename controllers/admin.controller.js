@@ -6,6 +6,11 @@ const getDashboard = (req, res) => {
   res.render("admin/admin-dashboard");
 };
 
+const getCreateUser = (req, res) => {
+  res.render("admin/new-user");
+};
+
 module.exports = {
   getDashboard,
+  getCreateUser,
 };
