@@ -61,29 +61,6 @@ const getDashboard = (req, res) => {
   res.render("user/dashboard");
 };
 
-const getSignup = (req, res) => {
-  res.render("user/signup", { error: null });
-};
-
-const signup = async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
-  const confirmPassword = req.body.confirmpassword;
-  const user = new User(name, email, password);
-  const exists = await user.alreadyExists();
-  if (exists) {
-    res.render("user/signup", { error: "Email already exists" });
-    return;
-  }
-  if (password !== confirmPassword) {
-    res.render("user/signup", { error: "Passwords do not match" });
-    return;
-  }
-  await user.createUser();
-  res.redirect("/login");
-};
-
 const getLogout = (req, res) => {
   req.session.destroy();
   res.redirect("/login");
@@ -94,7 +71,5 @@ module.exports = {
   getLogin,
   login,
   getDashboard,
-  getSignup,
-  signup,
   getLogout,
 };
