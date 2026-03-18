@@ -1,6 +1,10 @@
 const User = require("../models/user.model");
 
 const get = (req, res) => {
+  if (req.session.user) {
+    res.redirect("/dashboard");
+    return;
+  }
   res.redirect("/login");
 };
 
@@ -31,7 +35,17 @@ const login = async (req, res) => {
   req.session.user = {
     id: user._id,
     email: user.email,
+    isAdmin: user.isAdmin,
   };
+  res.locals.user = {
+    id: user._id,
+    isAdmin: user.isAdmin,
+  };
+
+  if (user.isAdmin) {
+    res.redirect("/admin/dashboard");
+    return;
+  }
   res.redirect("/dashboard");
 };
 
@@ -66,6 +80,11 @@ const signup = async (req, res) => {
   res.redirect("/login");
 };
 
+const getLogout = (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
+};
+
 module.exports = {
   get,
   getLogin,
@@ -73,4 +92,5 @@ module.exports = {
   getDashboard,
   getSignup,
   signup,
+  getLogout,
 };

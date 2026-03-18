@@ -2,10 +2,15 @@
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
+//middlewares
 const notFoundMiddleware = require("./middlewares/not-found");
 const serverErrorMiddleware = require("./middlewares/server-error");
+//session configuration
 const sessionConfig = require("./config/session.config");
+//routes
 const authRoutes = require("./routes/auth.routes");
+const adminRoutes = require("./routes/admin.routes");
+//database connection
 const db = require("./database/documentRepository.db");
 const app = express();
 
@@ -21,7 +26,7 @@ app.use(session(sessionConfig));
 
 // routes
 app.use(authRoutes);
-app.use("/admin", require("./routes/admin.routes"));
+app.use("/admin", adminRoutes);
 
 // 404 handler
 app.use(notFoundMiddleware);

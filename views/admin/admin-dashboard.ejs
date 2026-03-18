@@ -1,0 +1,28 @@
+<%- include('inc/head', { title: 'Admin Dashboard' }) %>
+    <link rel="stylesheet" href="/styles/admin.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    </head>
+
+    <body>
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <%- include('./inc/nav-items') %>
+        </header>
+
+        <div class="container">
+
+            <!-- Page Title -->
+            <h2>All Users</h2>
+
+            <!-- Users Table -->
+            <div class="card">
+                <%- include('./inc/all-users') %>
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>
