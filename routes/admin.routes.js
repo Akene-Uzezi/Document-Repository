@@ -10,4 +10,6 @@ router.post("/new-user", adminController.createUser);
 
 router.get("/update/:id", adminController.getUpdateUser);
 
+router.get("/delete/:id", adminController.getDeleteUser);
+
 module.exports = router;
