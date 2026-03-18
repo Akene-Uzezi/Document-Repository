@@ -13,7 +13,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 // middleware to parse incoming request bodies
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 // for rendering static files like css, js, images
 app.use(express.static("public"));
 //dependency for session management
@@ -21,6 +21,7 @@ app.use(session(sessionConfig));
 
 // routes
 app.use(authRoutes);
+app.use("/admin", require("./routes/admin.routes"));
 
 // 404 handler
 app.use(notFoundMiddleware);

@@ -33,6 +33,15 @@ class User {
       console.error("Error creating user:", error);
     }
   }
+
+  static async findByEmail(email) {
+    const user = await db.getDb().collection("users").findOne({ email: email });
+    return user;
+  }
+
+  static async comparePassword(plainPassword, hashedPassword) {
+    return await bcrypt.compare(plainPassword, hashedPassword);
+  }
 }
 
 module.exports = User;
