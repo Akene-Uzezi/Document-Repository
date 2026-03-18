@@ -1,10 +1,19 @@
 const User = require("../models/user.model");
-const getDashboard = (req, res) => {
+const db = require("../database/documentRepository.db");
+const getDashboard = async (req, res) => {
   if (!req.session.user || !req.session.user.isAdmin) {
     res.redirect("/login");
     return;
   }
-  res.render("admin/admin-dashboard");
+  const users = await db.getDb().collection("users").find().toArray();
+  const newUsers = users.map((user) => {
+    return {
+      id: user._id.toString(),
+      name: user.name,
+      email: user.email,
+    };
+  });
+  res.render("admin/admin-dashboard", { users: newUsers });
 };
 
 const getCreateUser = (req, res) => {
@@ -30,8 +39,14 @@ const createUser = async (req, res) => {
   res.redirect("/admin/dashboard");
 };
 
+const getUpdateUser = async (req, res) => {
+  const { id } = req.params;
+  res.send(id);
+};
+
 module.exports = {
   getDashboard,
   getCreateUser,
   createUser,
+  getUpdateUser,
 };
