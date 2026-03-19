@@ -17,7 +17,11 @@ body {
 .logo {
   font-weight: bold;
   font-size: 18px;
+}
+
+.logo a {
   color: #2d6cdf;
+  text-decoration: none;
 }
 
 .nav-links a {
