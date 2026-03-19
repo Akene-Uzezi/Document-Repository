@@ -5,7 +5,8 @@ class Uploads {
     return await db
       .getDb()
       .collection("uploads")
-      .findMany({ user: new ObjectId(userId) });
+      .find({ user: new ObjectId(userId) })
+      .toArray();
   }
 }
 

@@ -1,26 +1,28 @@
-<thead>
-    <tr>
-        <th>Filename</th>
-        <th>Size</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>report.pdf(name)</td>
-        <td>200 KB(size)</td>
-        <td>
-            <button class="btn download">Download</button>
-            <button class="btn delete">Delete</button>
-        </td>
-    </tr>
-
-    <tr>
-        <td>notes.docx</td>
-        <td>150 KB</td>
-        <td>
-            <button class="btn download">Download</button>
-            <button class="btn delete">Delete</button>
-        </td>
-    </tr>
-</tbody>
+<% if(files.length===0) { %>
+    <img src="/img/no files.png" alt="no files" height="588px" width="687px"
+        style="object-fit: cover; margin: 0 11rem;">
+    <% } else { %>
+        <thead>
+            <tr>
+                <th>Filename</th>
+                <th>Size</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% files.forEach(file=> { %>
+                <tr>
+                    <td>
+                        <%= file.name %>
+                    </td>
+                    <td>
+                        <%= file.size %>
+                    </td>
+                    <td>
+                        <button class="btn download">Download</button>
+                        <button class="btn delete">Delete</button>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+        <% } %>

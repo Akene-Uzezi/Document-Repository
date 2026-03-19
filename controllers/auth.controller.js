@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Uploads = require("../models/uploads.model");
 
 const get = (req, res) => {
   if (req.session.user) {
@@ -36,6 +37,7 @@ const login = async (req, res) => {
     id: user._id,
     email: user.email,
     isAdmin: user.isAdmin,
+    name: user.name,
   };
   res.locals.user = {
     id: user._id,
@@ -49,7 +51,7 @@ const login = async (req, res) => {
   res.redirect("/dashboard");
 };
 
-const getDashboard = (req, res) => {
+const getDashboard = async (req, res) => {
   if (!req.session.user) {
     res.redirect("/login");
     return;
@@ -58,7 +60,8 @@ const getDashboard = (req, res) => {
     res.redirect("/admin/dashboard");
     return;
   }
-  res.render("user/dashboard");
+  const files = await Uploads.getUserfiles(req.session.user.id);
+  res.render("user/dashboard", { files, user: req.session.user.name });
 };
 
 const getLogout = (req, res) => {

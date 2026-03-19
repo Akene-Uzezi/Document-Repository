@@ -6,7 +6,7 @@
     <body>
         <!-- Top Bar -->
         <header class="navbar">
-            <%- include('inc/nav-items.ejs') %>
+            <%- include('inc/nav-items.ejs', user) %>
         </header>
 
         <div class="container">
@@ -20,7 +20,7 @@
             <div class="card">
                 <h2>My Files</h2>
                 <table>
-                    <%- include('inc/file-items.ejs') %>
+                    <%- include('inc/file-items.ejs', files) %>
                 </table>
 
             </div>
