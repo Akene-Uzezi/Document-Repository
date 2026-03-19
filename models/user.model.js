@@ -64,6 +64,17 @@ class User {
       .collection("users")
       .updateOne({ _id: new ObjectId(id) }, { $set: { name, email } });
   }
+
+  static async updatePassword(id, password) {
+    const hashedPassword = await bcrypt.hash(password, 12);
+    await db
+      .getDb()
+      .collection("users")
+      .updateOne(
+        { _id: new ObjectId(id) },
+        { $set: { password: hashedPassword } },
+      );
+  }
 }
 
 module.exports = User;

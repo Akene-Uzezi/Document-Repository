@@ -68,6 +68,42 @@ const getDeleteUser = async (req, res, next) => {
   res.redirect("/admin/dashboard");
 };
 
+const getResetUser = async (req, res, next) => {
+  let user;
+  try {
+    const { id } = req.params;
+    user = await User.findById(id);
+  } catch (err) {
+    next(err);
+  }
+  if (!user) {
+    res.render("admin/reset-user-password", {
+      error: "user with that id does not exist",
+      user: {
+        _id: "",
+        email: "",
+      },
+    });
+    return;
+  }
+  res.render("admin/reset-user-password", { error: null, user });
+};
+
+const resetPassword = async (req, res) => {
+  const { id } = req.params;
+  const { password, confirmpassword } = req.body;
+  const user = await User.findById(id);
+  if (password !== confirmpassword) {
+    res.render("admin/reset-user-password", {
+      error: "Passwords do not match",
+      user,
+    });
+    return;
+  }
+  await User.updatePassword(id, password);
+  res.redirect("/admin/dashboard");
+};
+
 module.exports = {
   getDashboard,
   getCreateUser,
@@ -75,4 +111,6 @@ module.exports = {
   getUpdateUser,
   getDeleteUser,
   updateUser,
+  getResetUser,
+  resetPassword,
 };

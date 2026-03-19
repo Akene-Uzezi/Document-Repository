@@ -14,4 +14,8 @@ router.get("/delete/:id", adminController.getDeleteUser);
 
 router.post("/update/:id", adminController.updateUser);
 
+router.get("/reset/:id", adminController.getResetUser);
+
+router.post("/reset/:id", adminController.resetPassword);
+
 module.exports = router;
