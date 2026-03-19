@@ -10,6 +10,7 @@ const sessionConfig = require("./config/session.config");
 //routes
 const authRoutes = require("./routes/auth.routes");
 const adminRoutes = require("./routes/admin.routes");
+const userRoutes = require("./routes/user.routes");
 //database connection
 const db = require("./database/documentRepository.db");
 const app = express();
@@ -26,6 +27,7 @@ app.use(session(sessionConfig));
 
 // routes
 app.use(authRoutes);
+app.use(userRoutes);
 app.use("/admin", adminRoutes);
 
 // 404 handler
