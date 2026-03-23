@@ -12,6 +12,13 @@ class Uploads {
   static async upload(fileData) {
     await db.getDb().collection("uploads").insertOne(fileData);
   }
+
+  static async findFileById(id) {
+    return await db
+      .getDb()
+      .collection("uploads")
+      .findOne({ _id: new ObjectId(id) });
+  }
 }
 
 module.exports = Uploads;

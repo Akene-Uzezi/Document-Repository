@@ -1,4 +1,5 @@
 const Upload = require("../models/uploads.model");
+const path = require("path");
 const uploadFile = async (req, res) => {
   const sizeKB = (req.file.size / 1024).toFixed(2);
   const sizeMB = (req.file.size / (1024 * 1024)).toFixed(2);
@@ -15,6 +16,14 @@ const uploadFile = async (req, res) => {
   res.redirect("/dashboard");
 };
 
+const downloadFile = async (req, res) => {
+  const { id } = req.params;
+  const file = await Upload.findFileById(id);
+  const filePath = path.join(__dirname, "..", file.path.toString());
+  res.download(filePath, file.name);
+};
+
 module.exports = {
   uploadFile,
+  downloadFile,
 };

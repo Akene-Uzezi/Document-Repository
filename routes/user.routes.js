@@ -5,4 +5,6 @@ const fileUploadMiddleware = require("../middlewares/file-upload-middleware");
 
 router.post("/upload", fileUploadMiddleware, userController.uploadFile);
 
+router.get("/download/:id", userController.downloadFile);
+
 module.exports = router;
