@@ -3,7 +3,8 @@
     <form action="/upload" method="POST" enctype="multipart/form-data">
         <img src="/img/upload.png" alt="upload" height="50px" width="50px" style="object-fit: cover;">
         <p>Upload your files</p>
-        <input type="file" id="fileInput" name="file" required>
+        <input type="file" id="fileInput" name="file" required
+            accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation">
         <button class="btn">Upload</button>
     </form>
 </div>
