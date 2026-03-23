@@ -16,11 +16,12 @@
                         <%= file.name %>
                     </td>
                     <td>
-                        <%= file.size %>
+                        <%= file.sizeKB %> KB
                     </td>
                     <td>
-                        <button class="btn download">Download</button>
-                        <button class="btn delete">Delete</button>
+                        <button class="btn download"><a href="download/<%= file._id %>">Download</a></button>
+                        <button class="btn download"><a href="view/<%= file._id %>">View</a></button>
+                        <button class="btn delete"><a href="view/<%= file._id %>">Delete</a></button>
                     </td>
                 </tr>
                 <% }) %>

@@ -22,6 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: false }));
 // for rendering static files like css, js, images
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 //dependency for session management
 app.use(session(sessionConfig));
 

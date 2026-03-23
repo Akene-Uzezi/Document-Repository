@@ -5,8 +5,12 @@ class Uploads {
     return await db
       .getDb()
       .collection("uploads")
-      .find({ user: new ObjectId(userId) })
+      .find({ user: userId })
       .toArray();
+  }
+
+  static async upload(fileData) {
+    await db.getDb().collection("uploads").insertOne(fileData);
   }
 }
 
