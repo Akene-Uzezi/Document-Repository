@@ -1,7 +1,6 @@
 const Upload = require("../models/uploads.model");
 const path = require("path");
 const fs = require("fs");
-const { get } = require("http");
 const uploadFile = async (req, res) => {
   const sizeKB = (req.file.size / 1024).toFixed(2);
   const sizeMB = (req.file.size / (1024 * 1024)).toFixed(2);
@@ -69,8 +68,17 @@ const deleteFile = async (req, res) => {
   res.redirect("/dashboard");
 };
 
-const getArchive = (req, res) => {
-  res.render("user/archived.ejs", { user: req.session.user.name });
+const getArchive = async (req, res) => {
+  if (!req.session.user) {
+    res.redirect("/login");
+    return;
+  }
+  const files = await Upload.getUserFilesInOrder(req.session.user.id);
+  const groupedFiles = await Upload.groupAllFiles(files);
+  res.render("user/archived.ejs", {
+    user: req.session.user.name,
+    files: groupedFiles,
+  });
 };
 
 module.exports = {

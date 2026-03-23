@@ -93,3 +93,7 @@ body {
 .delete:hover {
   background: #c0392b;
 }
+
+#action {
+  text-decoration: none;
+}

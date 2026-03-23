@@ -1,0 +1,31 @@
+<div id="filesContainer">
+
+    <% for(const month in files) { %>
+        <h2>
+            <%= month %>
+        </h2>
+        <% for(const day in files[month]) { %>
+            <div class="day-group">
+                <h4>
+                    <%= day %>
+                </h4>
+                <div class="file-list">
+                    <% files[month][day].forEach(file=> { %>
+                        <div class="file-card">
+                            <span>
+                                <%= file.name %>
+                            </span>
+                            <div class="actions">
+                                <button><a style="text-decoration: none; color: white;" href="/view/<%= file._id %>"
+                                        target="_blank">View</a></button>
+                                <button><a style="text-decoration: none; color: white;" href="/download/<%= file._id %>"
+                                        target="_blank">Download</a></button>
+                                <button class="delete"><a style="text-decoration: none; color: white;"
+                                        href="/delete/<%= file._id %>" target="_blank">Delete</a></button>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+            <% } %>
+                <% } %>

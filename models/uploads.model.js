@@ -9,13 +9,22 @@ class Uploads {
       .toArray();
   }
 
+  static async getUserFilesInOrder(userId) {
+    return await db
+      .getDb()
+      .collection("uploads")
+      .find({ user: userId })
+      .sort({ _id: -1 })
+      .toArray();
+  }
+
   static async getRecentFiles(userId) {
     return await db
       .getDb()
       .collection("uploads")
       .find({ user: userId })
       .sort({ _id: -1 })
-      .limit(10)
+      .limit(7)
       .toArray();
   }
 
@@ -35,6 +44,32 @@ class Uploads {
       .getDb()
       .collection("uploads")
       .deleteOne({ _id: new ObjectId(id) });
+  }
+
+  static async groupAllFiles(files) {
+    return await files.reduce((acc, file) => {
+      const date = new Date(file.date);
+      const month = date.toLocaleString("default", {
+        month: "long",
+        year: "numeric",
+      });
+      const day = date.toLocaleString("default", {
+        month: "long",
+        day: "numeric",
+      });
+
+      if (!acc[month]) {
+        acc[month] = {};
+      }
+
+      if (!acc[month][day]) {
+        acc[month][day] = [];
+      }
+
+      acc[month][day].push(file);
+
+      return acc;
+    }, {});
   }
 }
 
