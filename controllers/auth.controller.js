@@ -10,6 +10,10 @@ const get = (req, res) => {
 };
 
 const getLogin = (req, res) => {
+  if (req.session.user) {
+    res.redirect("/dashboard");
+    return;
+  }
   res.render("user/login", { error: null });
 };
 

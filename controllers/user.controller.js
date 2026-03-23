@@ -18,22 +18,46 @@ const uploadFile = async (req, res) => {
 };
 
 const downloadFile = async (req, res) => {
+  if (!req.session.user) {
+    res.status(401).send("not authenticated");
+    return;
+  }
   const { id } = req.params;
   const file = await Upload.findFileById(id);
+  if (file.user.toString() !== req.session.user.id.toString()) {
+    res.status(403).send("not authorized");
+    return;
+  }
   const filePath = path.join(__dirname, "..", file.path.toString());
   res.download(filePath, file.name);
 };
 
 const viewFile = async (req, res) => {
+  if (!req.session.user) {
+    res.status(401).send("not authenticated");
+    return;
+  }
   const { id } = req.params;
   const file = await Upload.findFileById(id);
+  if (file.user.toString() !== req.session.user.id.toString()) {
+    res.status(403).send("not authorized");
+    return;
+  }
   const filePath = path.join(__dirname, "..", file.path.toString());
   res.sendFile(filePath);
 };
 
 const deleteFile = async (req, res) => {
+  if (!req.session.user) {
+    res.status(401).send("not authenticated");
+    return;
+  }
   const { id } = req.params;
   const file = await Upload.findFileById(id);
+  if (file.user.toString() !== req.session.user.id.toString()) {
+    res.status(403).send("not authorized");
+    return;
+  }
   const filePath = path.join(__dirname, "..", file.path.toString());
   await Upload.deleteFile(id);
   fs.unlink(filePath, (err) => {
