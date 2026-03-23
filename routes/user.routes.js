@@ -9,4 +9,6 @@ router.get("/download/:id", userController.downloadFile);
 
 router.get("/view/:id", userController.viewFile);
 
+router.get("/delete/:id", userController.deleteFile);
+
 module.exports = router;

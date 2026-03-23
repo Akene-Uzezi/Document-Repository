@@ -19,6 +19,13 @@ class Uploads {
       .collection("uploads")
       .findOne({ _id: new ObjectId(id) });
   }
+
+  static async deleteFile(id) {
+    await db
+      .getDb()
+      .collection("uploads")
+      .deleteOne({ _id: new ObjectId(id) });
+  }
 }
 
 module.exports = Uploads;
