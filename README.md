@@ -1,43 +1,71 @@
 # Document Repository
 
+## Project Description
+
+A web application for uploading, viewing, downloading, and managing documents.
+Users can organize files by date and access recent uploads easily.
+
+## Features
+
+- Upload files
+- View documents in browser
+- Download files
+- Delete files
+- Group files by month and day
+- Recent uploads section
+- User authentication
+- Admin user management
+
+## Tech Stack
+
+- Node.js
+- Express.js
+- MongoDB
+- EJS
+- Multer (file uploads)
+- bcrypt (password hashing)
+
 ## Project Structure
 
-- **`src/`**: Contains the source code for the project.
-- **`docs/`**: Contains documentation files for the project.
-- **`tests/`**: Contains test cases to ensure code quality.
-- **`README.md`**: Project overview and setup instructions.
+- **`config/`**: Contains the configuration for the session
+- **`controllers/`**: Contains the controller functions that connect the database to the frontend
+- **`database/`**: Contains the database function that connects and returns the database
+- **`models/`**: Contains Classes and Methods that manage and manipulate data
+- **`public/`**: Contains all static files that are rendered to the frontend
+- **`routes/`**: Contains _Router_ methods that point to controller methods for specific urls
+- **`views/`**: Contains all frontend ejs files
+- **`app.js`**: All code link Back to this file
 
 ## Setup Instructions
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/Akene-Uzezi/Document-Repository.git
    cd Document-Repository
    ```
 
 2. **Install dependencies**:
-   Depending on the programming language used, install the necessary libraries. For JavaScript, run:
+   Run:
+
    ```bash
    npm install
    ```
-   For Python, use:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
-3. **Run the application**:
+3. **Create a .env file**
+   dbName = `databaseName`
+   uri = `database url`
+   sessionSecret = `sessionkey`
+
+4. **Run the application**:
    Launch the application using the appropriate command:
+
    ```bash
-   node src/index.js  # for JavaScript
-   python src/main.py  # for Python
+   npm start
    ```
 
-4. **Run tests**:
-   To ensure everything is working properly, run the tests:
-   ```bash
-   npm test  # for JavaScript
-   pytest tests/  # for Python
-   ```
+5. **Open in Browser**:
+   http://localhost:3000
 
 ## Contributing
 
