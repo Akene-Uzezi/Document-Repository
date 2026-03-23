@@ -1,0 +1,57 @@
+<%- include('inc/head', {title: 'Archive - FileHub' }) %>
+    <link rel="stylesheet" href="/styles/files.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    </head>
+
+    <body>
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <%- include('inc/nav-items', {user}) %>
+        </header>
+
+        <div class="container">
+
+            <!-- Files Section -->
+            <div id="filesContainer">
+
+                <!-- Example Month -->
+                <div class="month-group">
+                    <h2>March 2026</h2>
+
+                    <!-- Day Group -->
+                    <div class="day-group">
+                        <h4>March 25</h4>
+
+                        <div class="file-list">
+                            <div class="file-card">
+                                <span>📄 report.pdf</span>
+                                <div class="actions">
+                                    <button>View</button>
+                                    <button>Download</button>
+                                    <button class="delete">Delete</button>
+                                </div>
+                            </div>
+
+                            <div class="file-card">
+                                <span>🖼️ image.png</span>
+                                <div class="actions">
+                                    <button>View</button>
+                                    <button>Download</button>
+                                    <button class="delete">Delete</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>

@@ -1,0 +1,95 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+}
+
+/* Navbar */
+.navbar {
+  background: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-weight: bold;
+  color: #2d6cdf;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Container */
+.container {
+  width: 85%;
+  margin: 30px auto;
+}
+
+/* Month Group */
+.month-group {
+  margin-bottom: 30px;
+}
+
+.month-group h2 {
+  color: #2d6cdf;
+  margin-bottom: 10px;
+}
+
+/* Day Group */
+.day-group {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.day-group h4 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* File List */
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* File Card */
+.file-card {
+  background: white;
+  padding: 12px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Actions */
+.actions button {
+  margin-left: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background: #2d6cdf;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.actions button:hover {
+  background: #1f52b5;
+}
+
+.delete {
+  background: #e74c3c;
+}
+
+.delete:hover {
+  background: #c0392b;
+}

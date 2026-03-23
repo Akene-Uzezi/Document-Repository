@@ -11,4 +11,6 @@ router.get("/view/:id", userController.viewFile);
 
 router.get("/delete/:id", userController.deleteFile);
 
+router.get("/archive", userController.getArchive);
+
 module.exports = router;
