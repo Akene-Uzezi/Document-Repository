@@ -7,4 +7,6 @@ router.post("/upload", fileUploadMiddleware, userController.uploadFile);
 
 router.get("/download/:id", userController.downloadFile);
 
+router.get("/view/:id", userController.viewFile);
+
 module.exports = router;

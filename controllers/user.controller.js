@@ -23,7 +23,15 @@ const downloadFile = async (req, res) => {
   res.download(filePath, file.name);
 };
 
+const viewFile = async (req, res) => {
+  const { id } = req.params;
+  const file = await Upload.findFileById(id);
+  const filePath = path.join(__dirname, "..", file.path.toString());
+  res.sendFile(filePath);
+};
+
 module.exports = {
   uploadFile,
   downloadFile,
+  viewFile,
 };
