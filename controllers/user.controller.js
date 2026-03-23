@@ -9,6 +9,7 @@ const uploadFile = async (req, res) => {
     path: req.file.path,
     sizeKB,
     sizeMB,
+    date: new Date(),
   };
   await Upload.upload(fileData);
   res.redirect("/dashboard");
