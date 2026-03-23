@@ -64,7 +64,7 @@ const getDashboard = async (req, res) => {
     res.redirect("/admin/dashboard");
     return;
   }
-  const files = await Uploads.getUserfiles(req.session.user.id);
+  const files = await Uploads.getRecentFiles(req.session.user.id);
   res.render("user/dashboard", { files, user: req.session.user.name });
 };
 

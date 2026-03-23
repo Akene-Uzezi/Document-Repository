@@ -9,6 +9,16 @@ class Uploads {
       .toArray();
   }
 
+  static async getRecentFiles(userId) {
+    return await db
+      .getDb()
+      .collection("uploads")
+      .find({ user: userId })
+      .sort({ _id: -1 })
+      .limit(10)
+      .toArray();
+  }
+
   static async upload(fileData) {
     await db.getDb().collection("uploads").insertOne(fileData);
   }
