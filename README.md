@@ -57,14 +57,16 @@ Users can organize files by date and access recent uploads easily.
    uri = `database url`
    sessionSecret = `sessionkey`
 
-4. **Run the application**:
+4. **Create an `uploads/` folder in the root directory**
+   This is where user files will be stored
+5. **Run the application**:
    Launch the application using the appropriate command:
 
    ```bash
    npm start
    ```
 
-5. **Open in Browser**:
+6. **Open in Browser**:
    http://localhost:3000
 
 ## Contributing
