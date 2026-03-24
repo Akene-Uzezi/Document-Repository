@@ -1,4 +1,6 @@
 const db = require("../database/documentRepository.db");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 const bcrypt = require("bcrypt");
 const ObjectId = require("mongodb").ObjectId;
 class User {
@@ -29,9 +31,37 @@ class User {
         password: hashedPassword,
       };
       await db.getDb().collection("users").insertOne(userData);
+      await this.sendEmail(this.email, this.name, this.password);
       return;
     } catch (error) {
       console.error("Error creating user:", error);
+    }
+  }
+
+  async sendEmail(userEmail, userName, userPassword) {
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.AdminEmail,
+        pass: process.env.AppPassword,
+      },
+    });
+
+    let mailOptions = {
+      from: `"Filehub Admin" ${process.env.AdminEmail}`,
+      to: userEmail,
+      subject: "Welcome to Filehub",
+      text: `Hi ${userName}, your account has been created successfully.
+        These are your Login Details: 
+        Email: ${userEmail},
+        Password: ${userPassword}
+      `,
+    };
+    try {
+      let info = await transporter.sendMail(mailOptions);
+      console.log("Email sent: " + info.response);
+    } catch (err) {
+      console.error("Error sending email", err);
     }
   }
 
