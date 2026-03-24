@@ -51,6 +51,8 @@ const updateUser = async (req, res, next) => {
   const { name, email } = req.body;
   try {
     await User.updateUser(id, name, email);
+    const user = await User.findById(id);
+    await User.sendUpdateUserEmail(user);
   } catch (err) {
     next(err);
   }

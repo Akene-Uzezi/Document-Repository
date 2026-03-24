@@ -132,6 +132,34 @@ class User {
         { $set: { password: hashedPassword } },
       );
   }
+
+  static async sendUpdateUserEmail(user) {
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.AdminEmail,
+        pass: process.env.AppPassword,
+      },
+    });
+
+    let mailOptions = {
+      from: `"Filehub Admin" ${process.env.AdminEmail}`,
+      to: user.email,
+      subject: "Account Update Successful",
+      text: `Hi ${user.name}, Your account was updated successfully
+      These are your new details
+      Name: ${user.name}
+      Email: ${user.email}
+      `,
+    };
+
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      console.log("Email sent: " + info.response);
+    } catch (err) {
+      console.error("Error sending email: ", err);
+    }
+  }
 }
 
 module.exports = User;
