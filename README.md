@@ -55,12 +55,19 @@ Users can organize files by date and access recent uploads easily.
 3. **Create a .env file**
 
    ```bash
-   dbName = `databaseName`
-   uri = `database url`
-   sessionSecret = `sessionkey`
-   AppPassword = `apppassword`
-   AdminEmail = 'example@example.com`
+   dbName = 'databaseName'
+   uri = 'database url'
+   sessionSecret = 'sessionkey'
+   AppPassword = 'apppassword'
+   AdminEmail = 'example@example.com'
    ```
+
+   ## How to Create App Password
+   - You must have 2 step verification enabled on the google account you want to use
+   - Go to your google account settings
+   - Under App name, enter a name for your project
+   - click create
+   - Copy the 16 character code that shows in the modal
 
 4. **Create an `uploads/` folder in the root directory**
    This is where user files will be stored
