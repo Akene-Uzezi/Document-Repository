@@ -53,9 +53,14 @@ Users can organize files by date and access recent uploads easily.
    ```
 
 3. **Create a .env file**
+
+   ```bash
    dbName = `databaseName`
    uri = `database url`
    sessionSecret = `sessionkey`
+   AppPassword = `apppassword`
+   AdminEmail = 'example@example.com`
+   ```
 
 4. **Create an `uploads/` folder in the root directory**
    This is where user files will be stored
