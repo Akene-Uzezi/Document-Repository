@@ -24,7 +24,7 @@ class Uploads {
       .collection("uploads")
       .find({ user: userId })
       .sort({ _id: -1 })
-      .limit(7)
+      .limit(10)
       .toArray();
   }
 
