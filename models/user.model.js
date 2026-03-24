@@ -192,6 +192,38 @@ class User {
       .collection("users")
       .updateOne({ _id: new ObjectId(id) }, { $set: { suspended: true } });
   }
+
+  static async restoreUser(id) {
+    await db
+      .getDb()
+      .collection("users")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { suspended: false } });
+  }
+
+  static async sendRestoreEmail(user) {
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.AdminEmail,
+        pass: process.env.AppPassword,
+      },
+    });
+    let mailOptions = {
+      from: `"Filehub Admin" ${process.env.AdminEmail}`,
+      to: user.email,
+      subject: "Account Restored",
+      text: `
+      Hi ${user.name}, Your Account Has been restored.
+      You can now log back in and access your files
+      `,
+    };
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      console.log("Email Sent :", info.response);
+    } catch (err) {
+      console.error("Error Sending Email: ", err);
+    }
+  }
 }
 
 module.exports = User;

@@ -15,7 +15,9 @@
                 <td>
                     <%= user.name %>
                         <% if(user.isAdmin) { %> <span style="color: grey; font-style: italic;">(admin)</span>
-                            <% } %>
+                            <% } else if(user.suspended) { %>
+                                <span style="color: red; font-style: italic;">(suspended)</span>
+                                <% } %>
                 </td>
                 <td>
                     <%= user.email %>
@@ -23,11 +25,14 @@
                 <td>
                     <a href="/admin/update/<%= user.id %>" class="btn update">Update</a>
                     <a href="/admin/reset/<%= user.id %>" class="btn update">Reset Password</a>
-                    <% if(user.suspended) { %>
-                        <a href="/admin/restore/<%= user.id %>" class="btn" style="background: green;">Restore User</a>
-                        <% } else {%>
-                            <a href="/admin/suspend/<%= user.id %>" class="btn delete">Suspend User</a>
-                            <% } %>
+                    <% if(!user.isAdmin) {%>
+                        <% if(user.suspended) { %>
+                            <a href="/admin/restore/<%= user.id %>" class="btn" style="background: green;">Restore
+                                User</a>
+                            <% } else {%>
+                                <a href="/admin/suspend/<%= user.id %>" class="btn delete">Suspend User</a>
+                                <% } %>
+                                    <% } %>
                 </td>
             </tr>
             <% }) %>

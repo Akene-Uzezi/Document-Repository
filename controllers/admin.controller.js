@@ -116,6 +116,14 @@ const suspendUser = async (req, res) => {
   res.redirect("/admin/dashboard");
 };
 
+const restoreUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  await User.restoreUser(id);
+  await User.sendRestoreEmail(user);
+  res.redirect("/admin/dashboard");
+};
+
 module.exports = {
   getDashboard,
   getCreateUser,
@@ -126,4 +134,5 @@ module.exports = {
   getResetUser,
   resetPassword,
   suspendUser,
+  restoreUser,
 };
