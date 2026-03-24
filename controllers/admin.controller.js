@@ -101,6 +101,7 @@ const resetPassword = async (req, res) => {
     return;
   }
   await User.updatePassword(id, password);
+  await User.sendResetPasswordEmail(user, password);
   res.redirect("/admin/dashboard");
 };
 

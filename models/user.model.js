@@ -2,6 +2,7 @@ const db = require("../database/documentRepository.db");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
+const { text } = require("body-parser");
 const ObjectId = require("mongodb").ObjectId;
 class User {
   constructor(name, email, password) {
@@ -55,6 +56,32 @@ class User {
         These are your Login Details: 
         Email: ${userEmail},
         Password: ${userPassword}
+      `,
+    };
+    try {
+      let info = await transporter.sendMail(mailOptions);
+      console.log("Email sent: " + info.response);
+    } catch (err) {
+      console.error("Error sending email", err);
+    }
+  }
+
+  static async sendResetPasswordEmail(user, password) {
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.AdminEmail,
+        pass: process.env.AppPassword,
+      },
+    });
+    let mailOptions = {
+      from: `"Filehub Admin" ${process.env.AdminEmail}`,
+      to: user.email,
+      subject: "Password Reset",
+      text: `Hi ${user.name}, your password has been reset successfully.
+      These are your new login details:
+      email: ${user.email}
+      password: ${password}
       `,
     };
     try {
