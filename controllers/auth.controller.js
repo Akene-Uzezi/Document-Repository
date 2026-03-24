@@ -25,6 +25,10 @@ const login = async (req, res) => {
     res.render("user/login", { error: "Invalid email" });
     return;
   }
+  if (user.suspended) {
+    res.render("user/login", { error: "This account has been suspended" });
+    return;
+  }
   try {
     const passwordMatch = await User.comparePassword(password, user.password);
     if (!passwordMatch) {

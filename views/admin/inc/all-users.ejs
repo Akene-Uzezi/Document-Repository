@@ -23,8 +23,8 @@
                 <td>
                     <a href="/admin/update/<%= user.id %>" class="btn update">Update</a>
                     <a href="/admin/reset/<%= user.id %>" class="btn update">Reset Password</a>
-                    <% if(user.suspendend) { %>
-                        <a href="/admin/restore/<%= user.id %>">Restore User</a>
+                    <% if(user.suspended) { %>
+                        <a href="/admin/restore/<%= user.id %>" class="btn" style="background: green;">Restore User</a>
                         <% } else {%>
                             <a href="/admin/suspend/<%= user.id %>" class="btn delete">Suspend User</a>
                             <% } %>

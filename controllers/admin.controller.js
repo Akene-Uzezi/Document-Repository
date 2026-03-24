@@ -12,6 +12,7 @@ const getDashboard = async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      suspended: user.suspended,
     };
   });
   res.render("admin/admin-dashboard", { users: newUsers });
@@ -107,6 +108,14 @@ const resetPassword = async (req, res) => {
   res.redirect("/admin/dashboard");
 };
 
+const suspendUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  await User.suspendUser(id);
+  await User.sendSuspendEmail(user);
+  res.redirect("/admin/dashboard");
+};
+
 module.exports = {
   getDashboard,
   getCreateUser,
@@ -116,4 +125,5 @@ module.exports = {
   updateUser,
   getResetUser,
   resetPassword,
+  suspendUser,
 };

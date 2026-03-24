@@ -18,4 +18,6 @@ router.get("/reset/:id", adminController.getResetUser);
 
 router.post("/reset/:id", adminController.resetPassword);
 
+router.get("/suspend/:id", adminController.suspendUser);
+
 module.exports = router;
