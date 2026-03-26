@@ -17,7 +17,7 @@ const sessionConfig = {
   saveUninitialized: false,
   store: createSessionStore(),
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24, // 1 day
+    maxAge: 1000 * 60 * 30, // 5 minutes
   },
 };
 
