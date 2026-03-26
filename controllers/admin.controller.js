@@ -61,16 +61,6 @@ const updateUser = async (req, res, next) => {
   res.redirect("/admin/dashboard");
 };
 
-const getDeleteUser = async (req, res, next) => {
-  const { id } = req.params;
-  try {
-    await User.deleteUser(id);
-  } catch (err) {
-    next(err);
-  }
-  res.redirect("/admin/dashboard");
-};
-
 const getResetUser = async (req, res, next) => {
   let user;
   try {

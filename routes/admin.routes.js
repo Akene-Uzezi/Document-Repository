@@ -10,8 +10,6 @@ router.post("/new-user", adminController.createUser);
 
 router.get("/update/:id", adminController.getUpdateUser);
 
-router.get("/delete/:id", adminController.getDeleteUser);
-
 router.post("/update/:id", adminController.updateUser);
 
 router.get("/reset/:id", adminController.getResetUser);

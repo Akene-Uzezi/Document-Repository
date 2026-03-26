@@ -108,13 +108,6 @@ class User {
       .findOne({ _id: new ObjectId(id) });
   }
 
-  static async deleteUser(id) {
-    return await db
-      .getDb()
-      .collection("users")
-      .deleteOne({ _id: new ObjectId(id) });
-  }
-
   static async updateUser(id, name, email) {
     return await db
       .getDb()
